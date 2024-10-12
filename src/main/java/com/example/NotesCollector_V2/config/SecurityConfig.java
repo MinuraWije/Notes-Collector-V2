@@ -12,21 +12,5 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
-    @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
-        return httpSecurity.build();
-    }
-    @Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager(){
-        UserDetails principleUser = User.withDefaultPasswordEncoder()
-                .username("minura")
-                .password("1234")
-                .roles("USER").build();
-        return new InMemoryUserDetailsManager(principleUser);
-    }
+
 }
